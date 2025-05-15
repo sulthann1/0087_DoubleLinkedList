@@ -83,136 +83,136 @@ public:
         }
     }
 
-        void hapus()
+    void hapus()
+    {
+        if (START == NULL)
         {
-           if (START == NULL)
-           {
             cout << "\nList is empty" << endl;
             return;
-           } 
-
-           cout << "\nEnter the roll number of the student whose record is to be deleted" ;
-           int rollNo;
-           cin >> rollNo;
-
-           Node *current = START;
-
-           // Step 1 : Traverse the list to find the node 
-           while (current != NULL && current -> noMhs != rollNo)
-            current = current -> next;
-
-            if (current == NULL)
-            {
-                cout << "Record not found" << endl;
-                return;
-            }
-
-            //Step 2 : if node is at beginning
-            if (current == START)
-            {
-                START = current -> next; // Step 2a : START = START.next
-                if (START != NULL)
-                START -> prev = NULL; // Step 2b : START.prev = NULL
-            }
-
-            else
-            {
-                //Step 3 : Link previous node to next of current
-                current -> prev -> next = current -> next;
-
-                //Step 4 : if current is not the last node
-                if  (current->next !=NULL)
-                current ->next ->prev = current -> prev;
-            }
-
-            // Step 5 : delete the node
-            delete current;
-            cout <<"Record with roll number" << rollNo << "deleted" << endl;
         }
 
-         void traverse()
+        cout << "\nEnter the roll number of the student whose record is to be deleted";
+        int rollNo;
+        cin >> rollNo;
+
+        Node *current = START;
+
+        // Step 1 : Traverse the list to find the node
+        while (current != NULL && current->noMhs != rollNo)
+            current = current->next;
+
+        if (current == NULL)
         {
-            if (START == NULL)
-            {
-                cout << "\nList is empty" << endl;
-                return;
-            }
-
-            // Step 1: Mark first node as currentNode
-            Node *currentNode = START;
-
-            // Step 2: Repeat untill currentNode == NULL
-            cout << "\nRecords in ascending order of roll number are:\n";
-            int i = 0;
-            while (currentNode != NULL)
-            {
-
-                cout << i + 1 << "." << currentNode->noMhs << " " << endl;
-
-                //Step 3: Move to next node
-                currentNode = currentNode->next;
-                i++;
-            }
+            cout << "Record not found" << endl;
+            return;
         }
 
-        void revtraverse()
+        // Step 2 : if node is at beginning
+        if (current == START)
         {
-            if (START == NULL)
-            {
-                cout << "\nList is empty" << endl;
-                return;
-            }
+            START = current->next; // Step 2a : START = START.next
+            if (START != NULL)
+                START->prev = NULL; // Step 2b : START.prev = NULL
+        }
 
-            //Step 1: Move to last node
-            Node *currentNode = START;
-            int i = 0;
-            while (currentNode->next != NULL)
-            {
-                currentNode = currentNode->next;
-                i++;
-            }
+        else
+        {
+            // Step 3 : Link previous node to next of current
+            current->prev->next = current->next;
 
-            // Step 2: Traverse backward
-            cout << "\nRecords in descending order of roll number are:\n";
-            while (currentNode != NULL)
-            {
-                cout << i + 1 << "." << currentNode->noMhs << " " << endl;
+            // Step 4 : if current is not the last node
+            if (current->next != NULL)
+                current->next->prev = current->prev;
+        }
+
+        // Step 5 : delete the node
+        delete current;
+        cout << "Record with roll number" << rollNo << "deleted" << endl;
+    }
+
+    void traverse()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" << endl;
+            return;
+        }
+
+        // Step 1: Mark first node as currentNode
+        Node *currentNode = START;
+
+        // Step 2: Repeat untill currentNode == NULL
+        cout << "\nRecords in ascending order of roll number are:\n";
+        int i = 0;
+        while (currentNode != NULL)
+        {
+
+            cout << i + 1 << "." << currentNode->noMhs << " " << endl;
+
+            // Step 3: Move to next node
+            currentNode = currentNode->next;
+            i++;
+        }
+    }
+
+    void revtraverse()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" << endl;
+            return;
+        }
+
+        // Step 1: Move to last node
+        Node *currentNode = START;
+        int i = 0;
+        while (currentNode->next != NULL)
+        {
+            currentNode = currentNode->next;
+            i++;
+        }
+
+        // Step 2: Traverse backward
+        cout << "\nRecords in descending order of roll number are:\n";
+        while (currentNode != NULL)
+        {
+            cout << i + 1 << "." << currentNode->noMhs << " " << endl;
 
             // Step 3: Move to previous node
             currentNode = currentNode->prev;
             i--;
-            }
         }
+    }
 
-        void searchData()
+    void searchData()
+    {
+        if (START == NULL)
         {
-            if (START == NULL)
-            {
-                cout << "\nList is empty" << endl;
-                return;
-            }
-
-            int rollNo;
-            cout << "\nEnter the roll number to search: ";
-            cin >> rollNo;
-
-            Node *current = START;
-
-            // Step 1: Traverse to find matching roll number
-            while (current != NULL && current->noMhs != rollNo)
-                current = current->next;
-
-            // Step 2: Output result
-            if (current == NULL)
-            {
-                cout << "Record not found\n";
-            }
-            else
-            {
-                cout << "Record found\n";
-                cout << "Roll Number: " << current->noMhs << endl;
-            }
+            cout << "\nList is empty" << endl;
+            return;
         }
+
+        int rollNo;
+        cout << "\nEnter the roll number to search: ";
+        cin >> rollNo;
+
+        Node *current = START;
+
+        // Step 1: Traverse to find matching roll number
+        while (current != NULL && current->noMhs != rollNo)
+            current = current->next;
+
+        // Step 2: Output result
+        if (current == NULL)
+        {
+            cout << "Record not found\n";
+        }
+        else
+        {
+            cout << "Record found\n";
+            cout << "Roll Number: " << current->noMhs << endl;
+        }
+    }
 };
 
 int main()
@@ -236,25 +236,25 @@ int main()
 
         switch (choice)
         {
-            case '1':
-                list.addNode();
-                break;
-            case '2':
-                list.hapus();
-                break;
-            case '3':
-                list.traverse();
-                break;
-            case '4':
-                list.revtraverse();
-                break;
-            case '5':
-                list.searchData();
-                break;
-            case '6':
-                return 0;
-            default:
-                cout << "Invalid option\n";
+        case '1':
+            list.addNode();
+            break;
+        case '2':
+            list.hapus();
+            break;
+        case '3':
+            list.traverse();
+            break;
+        case '4':
+            list.revtraverse();
+            break;
+        case '5':
+            list.searchData();
+            break;
+        case '6':
+            return 0;
+        default:
+            cout << "Invalid option\n";
         }
         cout << "\nPress Enter to continue...";
         cin.ignore();
@@ -262,7 +262,4 @@ int main()
         cout << endl;
         system("clear");
     } while (choice != '6');
-
-
-    
 };
