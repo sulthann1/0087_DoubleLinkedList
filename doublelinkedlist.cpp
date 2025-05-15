@@ -35,7 +35,7 @@ public:
         
         //Step 3 : Insert at beginning if list is empty or nim is
         if (START == NULL || nim <= START -> noMhs )
-        (
+        {
             if (START != NULL && nim  == START -> noMhs )
             {
                 cout << "\nDuplicate  number not allowed" << endl; 
@@ -61,7 +61,19 @@ public:
 
             Node *current = START;
             while (current -> next != NULL && current -> next -> noMhs < nim)
+            {
+                current = current -> next;
+            }
 
-        )
+            if (current -> next != NULL && nim == current -> next -> noMhs)
+            {
+                cout << "\nDuplicate rell number not allowed" << endl;
+                return;
+            }
+
+            //Step 9 : Insert between current and current -> next
+            newNode -> = current -> next
+
+        }
     }
 };
