@@ -75,6 +75,11 @@ public:
             newNode -> next  = current -> next; // Step 9a : newNode.next =
             newNode -> prev = current; // Step 9b : newNode.prev
 
+            //Insert last node
+            if 
+
+            current -> next = newNode; // Step 9d : 
+
         }
     }
 };
